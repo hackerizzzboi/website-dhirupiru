@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Loksewa Computer Operator Preparation</title>
+  <title>Loksewa CO • Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="High-standard preparation portal for Loksewa Computer Operator (Level 5) with MCQ practice, subjective notes, syllabus, typing, and more." />
+  <meta name="description" content="Dashboard for Loksewa Computer Operator preparation by Dhiaj Shahi." />
   <style>
     :root {
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
-      --bg: #0f172a;
-      --bg-soft: #020617;
+      --bg: #020617;
       --card: #020617;
       --accent: #22c55e;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --danger: #f97373;
       --border: #1f2937;
-      --radius: 10px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -26,16 +23,15 @@
       color: var(--text);
       line-height: 1.6;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: inherit; text-decoration: none; }
 
-    /* Layout */
+    /* Navbar shared */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(18px);
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.88);
       border-bottom: 1px solid var(--border);
     }
     .nav {
@@ -52,96 +48,103 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      flex-direction: column;
+      font-size: 0.93rem;
     }
     .logo span {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
-      text-transform: none;
       letter-spacing: normal;
+      text-transform: none;
     }
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
+      gap: 0.4rem;
       font-size: 0.85rem;
     }
     .nav-links a {
-      padding: 0.3rem 0.7rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.7);
       border: 1px solid transparent;
       transition: 0.18s ease;
       white-space: nowrap;
+      color: var(--muted);
     }
     .nav-links a:hover {
       border-color: var(--primary);
+      color: #dbeafe;
       background: rgba(37, 99, 235, 0.18);
+    }
+    .nav-links a.active {
+      border-color: var(--primary);
+      color: #eff6ff;
+      background: rgba(37, 99, 235, 0.35);
     }
 
     main {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 1.4rem 1.2rem 2.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(260px, 1.1fr);
-      gap: 1.5rem;
-    }
-    @media (max-width: 900px) {
-      main { grid-template-columns: 1fr; }
+      padding: 1.6rem 1.2rem 2.4rem;
     }
 
     /* Hero */
     .hero {
-      grid-column: 1 / -1;
-      margin-top: 0.7rem;
-      margin-bottom: 0.6rem;
-      padding: 1.3rem 1.2rem;
-      border-radius: 16px;
-      background: radial-gradient(circle at top left, rgba(59,130,246,0.4), transparent 55%),
-                  radial-gradient(circle at top right, rgba(34,197,94,0.35), transparent 55%),
-                  rgba(15,23,42,0.96);
-      border: 1px solid rgba(148,163,184,0.2);
       display: grid;
-      gap: 0.9rem;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 1.2rem;
+      padding: 1.4rem 1.3rem;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.55), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(34,197,94,0.35), transparent 55%),
+                  rgba(15,23,42,0.97);
+      border: 1px solid rgba(148,163,184,0.2);
+      box-shadow: 0 22px 60px rgba(15,23,42,0.95);
+      margin-bottom: 1.3rem;
+    }
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: 1fr; }
     }
     .hero-title {
-      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      font-size: clamp(1.7rem, 3.2vw, 2.1rem);
       font-weight: 700;
     }
     .hero-sub {
-      color: var(--muted);
-      max-width: 46rem;
+      margin-top: 0.4rem;
       font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32rem;
     }
-    .hero-tags {
+    .hero-meta {
+      margin-top: 0.8rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.75rem;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: #bfdbfe;
     }
-    .hero-tag {
+    .pill-soft {
+      padding: 0.15rem 0.7rem;
       border-radius: 999px;
-      padding: 0.15rem 0.6rem;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.8);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.7);
     }
     .hero-cta {
+      margin-top: 0.9rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.7rem;
-      margin-top: 0.4rem;
     }
     .btn {
-      padding: 0.45rem 0.95rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 999px;
       border: 1px solid transparent;
       cursor: pointer;
       font-size: 0.9rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
       background: var(--primary);
       color: white;
       box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
@@ -150,188 +153,117 @@
     .btn:hover {
       background: var(--primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.45);
     }
-    .btn-secondary {
+    .btn-outline {
       background: transparent;
-      border-color: rgba(148,163,184,0.6);
+      border-color: rgba(148,163,184,0.7);
       color: var(--text);
       box-shadow: none;
     }
-    .btn-secondary:hover {
-      background: rgba(15,23,42,0.9);
+    .btn-outline:hover {
+      background: rgba(15,23,42,0.96);
       transform: none;
     }
 
-    /* Cards & Sections */
-    section {
-      margin-bottom: 1.3rem;
+    .hero-right {
+      border-radius: 14px;
+      padding: 0.9rem 0.95rem;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(30,64,175,0.85);
     }
-    .card {
-      background: linear-gradient(145deg, rgba(15,23,42,0.98), #020617);
-      border-radius: var(--radius);
-      padding: 0.9rem 1rem;
+    .hero-right h2 {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .hero-right p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .stat-grid {
+      margin-top: 0.6rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      font-size: 0.8rem;
+    }
+    .stat {
+      padding: 0.45rem 0.55rem;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(31,41,55,0.9);
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    .stat-value {
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+
+    /* Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+    @media (max-width: 960px) {
+      .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    .card-link {
+      display: block;
+      padding: 0.9rem 0.9rem;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), #020617);
       border: 1px solid var(--border);
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.95);
+      box-shadow: 0 14px 40px rgba(15,23,42,0.9);
+      transition: 0.18s ease;
+      height: 100%;
     }
-    .card-header {
+    .card-link:hover {
+      border-color: rgba(59,130,246,0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 22px 60px rgba(37, 99, 235, 0.35);
+    }
+    .card-head {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
       gap: 0.4rem;
-      margin-bottom: 0.6rem;
-    }
-    .card-title {
-      font-size: 1.02rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.92rem;
       font-weight: 600;
-    }
-    .card-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
     }
     .badge {
       font-size: 0.72rem;
-      padding: 0.13rem 0.6rem;
+      padding: 0.15rem 0.6rem;
       border-radius: 999px;
-      background: rgba(22,163,74,0.12);
-      color: #4ade80;
-      border: 1px solid rgba(74,222,128,0.5);
+      background: rgba(37,99,235,0.18);
+      color: #bfdbfe;
+      border: 1px solid rgba(59,130,246,0.7);
       white-space: nowrap;
     }
-
-    h2, h3 {
-      font-size: 0.96rem;
-      margin-bottom: 0.4rem;
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
     }
-    p {
-      margin-bottom: 0.4rem;
-      font-size: 0.88rem;
-      color: #e5e7eb;
-    }
-    ul, ol { margin-left: 1.2rem; margin-bottom: 0.4rem; }
-    li { font-size: 0.86rem; margin-bottom: 0.22rem; }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.7rem;
-    }
-    @media (max-width: 640px) {
-      .grid-2 { grid-template-columns: 1fr; }
-    }
-
-    .pill-row {
+    .mini-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.15rem;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
     }
-    .pill {
-      font-size: 0.78rem;
-      padding: 0.15rem 0.55rem;
+    .mini-tag {
+      padding: 0.08rem 0.5rem;
       border-radius: 999px;
-      background: rgba(15,23,42,0.85);
       border: 1px solid rgba(55,65,81,0.9);
-    }
-
-    .syllabus-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.35rem;
-      font-size: 0.8rem;
-    }
-    .syllabus-table th,
-    .syllabus-table td {
-      border: 1px solid rgba(31,41,55,0.95);
-      padding: 0.35rem 0.45rem;
-      text-align: left;
-    }
-    .syllabus-table th {
-      background: rgba(15,23,42,0.9);
-      font-weight: 600;
-    }
-    .tag-soft {
-      display: inline-block;
-      font-size: 0.7rem;
-      padding: 0.1rem 0.45rem;
-      border-radius: 999px;
-      background: rgba(37,99,235,0.12);
-      color: #93c5fd;
-    }
-
-    /* Right sidebar */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-    .progress {
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(31,41,55,0.95);
-      overflow: hidden;
-      margin-top: 0.3rem;
-    }
-    .progress-inner {
-      width: 38%;
-      height: 100%;
-      background: linear-gradient(90deg, #22c55e, #eab308, #f97316);
-    }
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
-      color: var(--muted);
-    }
-
-    /* MCQ */
-    .mcq-question {
-      margin-top: 0.4rem;
-      padding: 0.45rem 0.55rem;
-      border-radius: 8px;
-      background: rgba(15,23,42,0.88);
-      border: 1px solid rgba(31,41,55,0.95);
-    }
-    .mcq-options {
-      margin-top: 0.3rem;
-      display: grid;
-      gap: 0.25rem;
-    }
-    .mcq-option {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.85rem;
-      padding: 0.25rem 0.35rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.15s ease;
-    }
-    .mcq-option:hover {
-      background: rgba(30,64,175,0.4);
-    }
-    .mcq-option input {
-      accent-color: var(--primary);
-    }
-    .mcq-meta {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      display: flex;
-      justify-content: space-between;
-    }
-    .mcq-answer {
-      margin-top: 0.3rem;
-      font-size: 0.8rem;
-      color: #6ee7b7;
-      display: none;
-    }
-
-    .note-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.4rem;
+      background: rgba(15,23,42,0.95);
     }
 
     footer {
@@ -344,386 +276,155 @@
       justify-content: space-between;
       gap: 0.4rem;
       border-top: 1px solid rgba(15,23,42,0.9);
-      margin-top: 0.6rem;
+      margin-top: 0.4rem;
     }
     @media (max-width: 640px) {
       footer { flex-direction: column; }
     }
-    .text-danger { color: var(--danger); }
+    .text-danger { color: #f97373; }
   </style>
 </head>
 <body>
-  <!-- Top Nav -->
   <header>
     <nav class="nav">
       <div class="logo">
         LOKSEWA CO
-        <span>Level 5 • Smart Prep</span>
+        <span>Dashboard • By Dhiaj Shahi</span>
       </div>
       <div class="nav-links">
-        <a href="#mcq">MCQ Practice</a>
-        <a href="#subjective">Subjective Notes</a>
-        <a href="#syllabus">Syllabus</a>
-        <a href="#typing">Typing</a>
-        <a href="#planner">Daily Plan</a>
-        <a href="#resources">Resources</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="mcq.html">MCQ</a>
+        <a href="subjective.html">Subjective</a>
+        <a href="syllabus.html">Syllabus</a>
+        <a href="typing.html">Typing</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
       <div>
-        <h1 class="hero-title">Computer Operator Loksewa Prep Dashboard</h1>
+        <h1 class="hero-title">Computer Operator Loksewa Prep Hub</h1>
         <p class="hero-sub">
-          One-page high-standard workspace for MCQs, subjective notes, official-style syllabus, typing practice, and daily planning – optimized for Loksewa Computer Operator (Level 5). 
+          Central control panel for your MCQs, subjective notes, syllabus and typing – built as a personal workspace for Loksewa Computer Operator Level 5.
         </p>
+        <div class="hero-meta">
+          <span class="pill-soft">Written • Practical • Interview</span>
+          <span class="pill-soft">Objective + Subjective</span>
+          <span class="pill-soft">English & Nepali Typing</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="mcq.html">Start MCQ Session →</a>
+          <a class="btn btn-outline" href="syllabus.html">Open Full Syllabus</a>
+        </div>
       </div>
-      <div class="hero-cta">
-        <a href="#mcq" class="btn">
-          Start MCQ Session →
-        </a>
-        <a href="#syllabus" class="btn btn-secondary">
-          View Complete Syllabus
-        </a>
-      </div>
-      <div class="hero-tags">
-        <span class="hero-tag">Written (Paper I & II)</span>
-        <span class="hero-tag">Practical + Typing</span>
-        <span class="hero-tag">Interview Ready</span>
-        <span class="hero-tag">English & Nepali</span>
+      <div class="hero-right">
+        <h2>Snapshot • Today</h2>
+        <p>Use this panel to quickly see how your preparation is distributed.</p>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-label">MCQ sets done</div>
+            <div class="stat-value">0 / 3</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Typing (minutes)</div>
+            <div class="stat-value">0 / 60</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Subjective answers</div>
+            <div class="stat-value">0 / 2</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Left Column -->
-    <div>
-      <!-- MCQ Practice -->
-      <section id="mcq" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">MCQ Practice Engine</h2>
-            <p class="card-sub">Fast objective practice for Computer Fundamentals, OS, MS Office, DBMS, Web, GK & Public Management.</p>
+    <section>
+      <div class="grid-3">
+        <a href="mcq.html" class="card-link">
+          <div class="card-head">
+            <span>MCQ Practice</span>
+            <span class="badge">Objective</span>
           </div>
-          <span class="badge">Timed • Exam Pattern</span>
-        </div>
-        <div class="grid-2">
-          <div>
-            <label for="mcq-topic" style="font-size:0.8rem;color:var(--muted);">Topic / Unit</label>
-            <select id="mcq-topic" style="width:100%;margin-top:0.25rem;padding:0.35rem 0.45rem;border-radius:8px;border:1px solid var(--border);background:#020617;color:var(--text);font-size:0.85rem;">
-              <option value="fundamental">Computer Fundamentals</option>
-              <option value="os">Operating System</option>
-              <option value="word">MS-Word</option>
-              <option value="excel">MS-Excel</option>
-              <option value="ppt">PowerPoint</option>
-              <option value="dbms">Database / SQL</option>
-              <option value="web">HTML / Web</option>
-              <option value="network">Networking / Security</option>
-              <option value="gk">GK & Public Management</option>
-            </select>
+          <p class="card-desc">Topic-wise MCQs for fundamentals, OS, MS Office, DBMS, web, networking and GK/public management.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Timed</span>
+            <span class="mini-tag">Previous sets</span>
+            <span class="mini-tag">Accuracy focus</span>
           </div>
-          <div>
-            <label style="font-size:0.8rem;color:var(--muted);">Mode</label>
-            <div class="pill-row">
-              <span class="pill">Quick 10 Q</span>
-              <span class="pill">Full 50 Q</span>
-              <span class="pill">Previous Year</span>
-            </div>
+        </a>
+
+        <a href="subjective.html" class="card-link">
+          <div class="card-head">
+            <span>Subjective Notes</span>
+            <span class="badge">Paper II</span>
+          </div>
+          <p class="card-desc">Structured space to write and revise short and long answers for job-based knowledge.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Definitions</span>
+            <span class="mini-tag">Procedures</span>
+            <span class="mini-tag">Diagrams</span>
+          </div>
+        </a>
+
+        <a href="syllabus.html" class="card-link">
+          <div class="card-head">
+            <span>Syllabus & Plan</span>
+            <span class="badge">Roadmap</span>
+          </div>
+          <p class="card-desc">Clear view of exam structure and topics so you can track completion and plan weekly targets.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Written</span>
+            <span class="mini-tag">Practical</span>
+            <span class="mini-tag">Interview</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid-3">
+        <a href="typing.html" class="card-link">
+          <div class="card-head">
+            <span>Typing & Practical</span>
+            <span class="badge">Hands-on</span>
+          </div>
+          <p class="card-desc">Log English and Nepali typing, office package tasks and practical simulations.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">EN + NP</span>
+            <span class="mini-tag">MS Office</span>
+            <span class="mini-tag">Realistic tasks</span>
+          </div>
+        </a>
+
+        <div class="card-link">
+          <div class="card-head">
+            <span>Daily Routine</span>
+            <span class="badge">Template</span>
+          </div>
+          <p class="card-desc">Keep your fixed slots for college, tuition, MCQ, subjective and typing in one quick view.</p>
+          <div class="mini-tags" style="margin-top:0.4rem;">
+            <span class="mini-tag">Morning: MCQ + typing</span>
+            <span class="mini-tag">Evening: GK / revision</span>
           </div>
         </div>
 
-        <div class="mcq-question" id="mcq-box">
-          <div style="font-size:0.82rem;color:var(--muted);margin-bottom:0.2rem;">
-            Sample Question • Topic: Computer Fundamentals
+        <div class="card-link">
+          <div class="card-head">
+            <span>Resources (Manual)</span>
+            <span class="badge">Links</span>
           </div>
-          <div style="font-size:0.9rem;">
-            Q1. Which of the following is <strong>not</strong> an input device?
-          </div>
-          <div class="mcq-options">
-            <label class="mcq-option">
-              <input type="radio" name="q1" value="a" /> Keyboard
-            </label>
-            <label class="mcq-option">
-              <input type="radio" name="q1" value="b" /> Mouse
-            </label>
-            <label class="mcq-option">
-              <input type="radio" name="q1" value="c" /> Scanner
-            </label>
-            <label class="mcq-option">
-              <input type="radio" name="q1" value="d" /> Monitor
-            </label>
-          </div>
-          <div class="mcq-meta">
-            <span>Marks: 2 | Negative: 0.5</span>
-            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.7rem;font-size:0.78rem;" onclick="toggleAnswer()">Show Answer</button>
-          </div>
-          <div class="mcq-answer" id="mcq-answer">
-            Correct: Monitor (output device). Explanation: Keyboard, mouse and scanner send data to the computer; monitor displays processed output.
+          <p class="card-desc">Attach your PDFs, apps and playlists by bookmarking them in the browser with this hub as home.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Past sets</span>
+            <span class="mini-tag">Notes PDFs</span>
+            <span class="mini-tag">Videos</span>
           </div>
         </div>
-      </section>
-
-      <!-- Subjective Notes -->
-      <section id="subjective" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Subjective Notes & Model Answers</h2>
-            <p class="card-sub">Organize short and long answers for Paper II (job-based knowledge) with exam-focused headings.</p>
-          </div>
-          <span class="badge">Paper II • Theory</span>
-        </div>
-        <div class="grid-2">
-          <div>
-            <h3>Core Theory Buckets</h3>
-            <ul class="note-list">
-              <li>
-                <span>Computer Fundamentals & Number System</span>
-                <span class="tag-soft">Short & Long</span>
-              </li>
-              <li>
-                <span>Operating System & File Management</span>
-                <span class="tag-soft">Expected Q/A</span>
-              </li>
-              <li>
-                <span>MS Office (Word, Excel, PPT)</span>
-                <span class="tag-soft">Procedures</span>
-              </li>
-              <li>
-                <span>DBMS & SQL Basics</span>
-                <span class="tag-soft">5M / 10M</span>
-              </li>
-              <li>
-                <span>Networking & Internet Security</span>
-                <span class="tag-soft">Concept Map</span>
-              </li>
-              <li>
-                <span>Web Design (HTML/CSS basics)</span>
-                <span class="tag-soft">Code + Theory</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3>Quick Note Pad (Editable)</h3>
-            <textarea id="notes-box" rows="7" style="width:100%;border-radius:8px;border:1px solid var(--border);background:#020617;color:var(--text);font-size:0.84rem;padding:0.4rem 0.45rem;resize:vertical;">
-Sample structure:
-
-1. Definition:
-2. Diagram / Example:
-3. Steps:
-4. Advantages / Limitations:
-5. Loksewa-style conclusion:
-            </textarea>
-            <p style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">
-              Tip: Keep each answer within word limit, use headings, bullets, and conclude with practical use for a government office.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Syllabus -->
-      <section id="syllabus" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Computer Operator Syllabus Snapshot</h2>
-            <p class="card-sub">Structure aligned with common Loksewa Computer Operator pattern: written, practical, interview, typing focus.</p>
-          </div>
-          <span class="badge">Official Style</span>
-        </div>
-        <h3>Exam Structure</h3>
-        <table class="syllabus-table">
-          <thead>
-            <tr>
-              <th>Stage</th>
-              <th>Paper / Component</th>
-              <th>Marks</th>
-              <th>Type</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td rowspan="2">Written</td>
-              <td>Paper I: GK & Public Management + Job-based MCQs</td>
-              <td>100</td>
-              <td>Objective (MCQ)</td>
-              <td>~45 min</td>
-            </tr>
-            <tr>
-              <td>Paper II: Job-based Knowledge</td>
-              <td>100</td>
-              <td>Short & Long Answer</td>
-              <td>~2–3 hrs</td>
-            </tr>
-            <tr>
-              <td>Practical</td>
-              <td>Typing, MS Office, Email / Internet, File tasks</td>
-              <td>50</td>
-              <td>Hands-on</td>
-              <td>~45 min</td>
-            </tr>
-            <tr>
-              <td>Interview</td>
-              <td>Personality, practical work understanding</td>
-              <td>30</td>
-              <td>Oral</td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style="margin-top:0.6rem;">Key Course Units</h3>
-        <div class="grid-2">
-          <div>
-            <ul>
-              <li>Computer Fundamentals, number system, hardware & software</li>
-              <li>Operating System, file & disk management, utilities</li>
-              <li>Word Processing (Nepali & English typing integration)</li>
-              <li>Spreadsheet (functions, charts, data analysis basics)</li>
-              <li>Presentation (designing official slides)</li>
-              <li>Database & basic SQL (SELECT, simple queries)</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li>Internet, email, web basics & e-governance</li>
-              <li>Networking & security fundamentals</li>
-              <li>Web page designing basics (HTML/CSS)</li>
-              <li>General Knowledge & Public Management</li>
-              <li>Office procedures, documentation, record management</li>
-              <li>Typing: English & Devanagari speed and accuracy</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Planner -->
-      <section id="planner" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Daily Study Planner (Template)</h2>
-            <p class="card-sub">Simple structure to balance college, MCQ, subjective, typing, and revision in one place.</p>
-          </div>
-          <span class="badge">Customizable</span>
-        </div>
-        <div class="grid-2">
-          <div>
-            <h3>Slots (Example)</h3>
-            <ul>
-              <li>Morning: MCQ + Typing (EN/Nepali)</li>
-              <li>Day: College / coursework</li>
-              <li>Evening: GK + Public Management</li>
-              <li>Night: Subjective answer writing + review</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Your Plan</h3>
-            <textarea rows="5" style="width:100%;border-radius:8px;border:1px solid var(--border);background:#020617;color:var(--text);font-size:0.84rem;padding:0.4rem 0.45rem;resize:vertical;">
-Example:
-
-04:30–06:30  MCQ + Typing
-07:00–11:00  College
-14:00–16:00  Subjective + Office package
-18:00–19:00  Tuition
-21:00–23:00  GK / mock + revision
-            </textarea>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Right Sidebar -->
-    <aside class="sidebar">
-      <!-- Progress -->
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Overall Progress (Manual)</h2>
-            <p class="card-sub">Update weekly to keep track of syllabus completion.</p>
-          </div>
-        </div>
-        <div class="progress">
-          <div class="progress-inner"></div>
-        </div>
-        <div class="stat-row">
-          <span>Estimated completion</span>
-          <span>~38%</span>
-        </div>
-        <ul style="margin-top:0.5rem;">
-          <li>✔ Fundamentals & OS basic MCQs</li>
-          <li>✔ Word / Excel basics</li>
-          <li>⬤ DBMS / SQL – in progress</li>
-          <li>◯ Web design & networking – pending</li>
-        </ul>
-      </section>
-
-      <!-- Typing -->
-      <section id="typing" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Typing Practice Panel</h2>
-            <p class="card-sub">Track English + Devanagari typing as required for Computer Operator.</p>
-          </div>
-          <span class="badge">Practical Focus</span>
-        </div>
-        <div class="grid-2">
-          <div>
-            <h3>Targets</h3>
-            <ul>
-              <li>English: 30–40+ WPM, high accuracy</li>
-              <li>Nepali: practical official letter speed</li>
-              <li>Daily: 60 min total (both)</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Today’s Log</h3>
-            <textarea rows="4" style="width:100%;border-radius:8px;border:1px solid var(--border);background:#020617;color:var(--text);font-size:0.82rem;padding:0.35rem 0.45rem;resize:vertical;">
-Example:
-EN: 25 WPM – 10 min
-NP: 20 WPM – 15 min
-Platform: monkeytype / Preeti
-            </textarea>
-          </div>
-        </div>
-        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">
-          Use online tools (e.g., monkeytype, Nepali keyboard tutors) and copy common official formats (letters, applications) for realistic practice.
-        </p>
-      </section>
-
-      <!-- Resources / Links -->
-      <section id="resources" class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Resources & Strategy</h2>
-            <p class="card-sub">Link your PDFs, apps, and playlists for one-click access.</p>
-          </div>
-        </div>
-        <h3>Attach / Remember</h3>
-        <ul>
-          <li>Official syllabus PDF & past questions</li>
-          <li>MCQ apps / websites for Computer Operator</li>
-          <li>Typing tools (EN + Nepali)</li>
-          <li>GK & Public Management notes</li>
-        </ul>
-        <h3 style="margin-top:0.5rem;">Strategy Tips</h3>
-        <ul>
-          <li>Finish theory once, then rotate MCQ + revision daily.</li>
-          <li>Mix typing and office practical with written prep.</li>
-          <li>Every week, do at least one full mock (Paper I pattern).</li>
-        </ul>
-      </section>
-    </aside>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <span>Loksewa Computer Operator Prep Workspace • index.html • Designed for personal use by Dhiaj Shahi.</span>
-    <span class="text-danger">Reminder: Keep backup of your notes before clearing browser storage.</span>
+    <span>Loksewa Computer Operator Prep Hub • Designed for personal use by Dhiaj Shahi.</span>
+    <span class="text-danger">Backup your notes and files regularly.</span>
   </footer>
-
-  <script>
-    function toggleAnswer() {
-      const ans = document.getElementById('mcq-answer');
-      ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
 </body>
 </html>
