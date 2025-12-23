@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MCQ • Loksewa CO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Same base styles and navbar as index (you can later move to style.css) */
+    :root {
+      --primary: #2563eb;
+      --bg: #020617;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 55%, #000 100%);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 23, 42, 0.88);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.93rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .logo span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+    .nav-links a {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid transparent;
+      transition: 0.18s ease;
+      white-space: nowrap;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      border-color: var(--primary);
+      color: #dbeafe;
+      background: rgba(37, 99, 235, 0.18);
+    }
+    .nav-links a.active {
+      border-color: var(--primary);
+      color: #eff6ff;
+      background: rgba(37, 99, 235, 0.35);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.6rem 1.2rem 2.4rem;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+    p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .panel {
+      border-radius: 14px;
+      padding: 1rem 1rem;
+      background: rgba(15,23,42,0.97);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.9);
+    }
+    label, select {
+      font-size: 0.85rem;
+    }
+    select {
+      width: 100%;
+      margin-top: 0.25rem;
+      padding: 0.4rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 0.7rem;
+    }
+    @media (max-width: 640px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.86rem;
+      background: #2563eb;
+      color: white;
+      margin-top: 0.4rem;
+    }
+    .mcq-question {
+      margin-top: 0.9rem;
+      padding: 0.6rem 0.7rem;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .mcq-options {
+      margin-top: 0.4rem;
+      display: grid;
+      gap: 0.3rem;
+      font-size: 0.86rem;
+    }
+    .mcq-option {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .mcq-option:hover {
+      background: rgba(30,64,175,0.35);
+    }
+    .meta {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+    .answer {
+      margin-top: 0.3rem;
+      font-size: 0.82rem;
+      color: #6ee7b7;
+      display: none;
+    }
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.2rem 1.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        LOKSEWA CO
+        <span>MCQ Practice • By Dhiaj Shahi</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="mcq.html" class="active">MCQ</a>
+        <a href="subjective.html">Subjective</a>
+        <a href="syllabus.html">Syllabus</a>
+        <a href="typing.html">Typing</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>MCQ Practice</h1>
+    <p>Select topic and mode, then later you can plug real questions here (JSON or manual).</p>
+
+    <div class="panel">
+      <div class="grid-2">
+        <div>
+          <label for="topic">Topic</label>
+          <select id="topic">
+            <option>Computer Fundamentals</option>
+            <option>Operating System</option>
+            <option>MS Word</option>
+            <option>MS Excel</option>
+            <option>PowerPoint</option>
+            <option>DBMS / SQL</option>
+            <option>Networking / Security</option>
+            <option>Web / HTML</option>
+            <option>GK & Public Management</option>
+          </select>
+        </div>
+        <div>
+          <label for="mode">Mode</label>
+          <select id="mode">
+            <option>Quick 10 questions</option>
+            <option>Full 50 questions</option>
+            <option>Previous year set</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn" type="button" onclick="loadSample()">Load sample question</button>
+
+      <div id="mcq-box" class="mcq-question" style="display:none;">
+        <div id="q-text">Sample question text</div>
+        <div class="mcq-options">
+          <label class="mcq-option">
+            <input type="radio" name="q1" /> Option A
+          </label>
+          <label class="mcq-option">
+            <input type="radio" name="q1" /> Option B
+          </label>
+          <label class="mcq-option">
+            <input type="radio" name="q1" /> Option C
+          </label>
+          <label class="mcq-option">
+            <input type="radio" name="q1" /> Option D
+          </label>
+        </div>
+        <div class="meta">
+          <span>Marks: 2 | Negative: 0.5</span>
+          <span style="cursor:pointer;" onclick="toggleAnswer()">Show / Hide answer</span>
+        </div>
+        <div id="ans" class="answer">
+          Correct: example answer with explanation.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Loksewa Computer Operator MCQ panel • For personal practice by Dhiaj Shahi.
+  </footer>
+
+  <script>
+    function loadSample() {
+      const box = document.getElementById('mcq-box');
+      const q = document.getElementById('q-text');
+      box.style.display = 'block';
+      q.textContent = 'Q. Which device is used to store data permanently?';
+      document.getElementById('ans').textContent =
+        'Correct: Hard disk. It is a non-volatile storage device used to store data permanently.';
+    }
+    function toggleAnswer() {
+      const a = document.getElementById('ans');
+      a.style.display = a.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
